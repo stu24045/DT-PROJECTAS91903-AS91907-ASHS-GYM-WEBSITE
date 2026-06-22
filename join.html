@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ASHS Gym | Join</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -20,84 +19,10 @@
         <a href="guidelines.html">Guidelines</a>
         <a href="contacts.html">Contacts</a>
         <a class="button button-secondary active" href="join.html">Join</a>
+        <button id="themeToggle" class="button button-outline" aria-label="Toggle theme">Light Mode</button>
       </nav>
     </div>
   </header>
-
-  <main class="container content-page">
-    <section>
-      <span class="eyebrow">Join the Gym</span>
-      <h1>Apply to Join ASHS Gym</h1>
-      <p>Complete the form and our staff will review your application. Use the SQL schema file to store submitted data in SQLiteStudio.</p>
-    </section>
-
-    <section class="join-grid">
-      <form id="joinForm" class="join-form" novalidate>
-        <label for="fullName">Full Name</label>
-        <input id="fullName" name="fullName" type="text" required placeholder="Your full name" />
-
-        <label for="age">Age</label>
-        <input id="age" name="age" type="number" min="11" max="25" required placeholder="Your age" />
-
-        <label for="grade">Grade</label>
-        <select id="grade" name="grade" required>
-          <option value="">Select grade</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-        </select>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="you@example.com" />
-
-        <label for="phone">Phone</label>
-        <input id="phone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="1234567890" />
-
-        <label for="program">Preferred Program</label>
-        <select id="program" name="program" required>
-          <option value="">Choose a program</option>
-          <option>Beginner Circuit</option>
-          <option>Strength Sessions</option>
-          <option>Active Recovery</option>
-        </select>
-
-        <label for="goals">Fitness Goals</label>
-        <textarea id="goals" name="goals" rows="4" placeholder="Tell us your goals" required></textarea>
-
-        <button class="button button-primary" type="submit">Submit Application</button>
-        <p id="formMessage" class="form-message" aria-live="polite"></p>
-      </form>
-
-      <aside class="join-details">
-        <h2>Data Storage with SQLite</h2>
-        <p>Use the SQL schema file <strong>submissions.sql</strong> in SQLiteStudio to create a table for applications. The columns are set for the correct SQLite data types.</p>
-        <a class="button button-outline" href="submissions.sql" download>Download SQL Schema</a>
-        <div class="sql-note">
-          <p><strong>Note:</strong> This page is static, so form submissions stay in your browser. Use the SQL schema in SQLiteStudio to store real entries in a local database.</p>
-        </div>
-      </aside>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h2>ASHS Gym</h2>
-        <p>School fitness center supporting students across grades with safe training and practical guidance.</p>
-      </div>
-      <div>
-        <p><strong>Address:</strong> ASHS Campus, Fitness Wing</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> gym@ashs.edu</p>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/ASHSGym" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.instagram.com/ASHSGym" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
