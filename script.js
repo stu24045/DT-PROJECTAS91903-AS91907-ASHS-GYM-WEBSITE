@@ -2,6 +2,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const themeToggle = document.getElementById('themeToggle');
   const form = document.getElementById('joinForm');
   const message = document.getElementById('formMessage');
+  const navLinks = document.querySelectorAll('.site-nav a[href]');
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+  navLinks.forEach(function (link) {
+    const href = link.getAttribute('href') || '';
+    const normalizedHref = href.split('?')[0].split('#')[0].toLowerCase();
+    const normalizedPage = currentPage.toLowerCase();
+
+    if (normalizedHref === normalizedPage || (normalizedHref === 'index.html' && (normalizedPage === '' || normalizedPage === 'index.html'))) {
+      link.classList.add('active');
+    }
+  });
 
   function applyTheme(theme) {
     if (theme === 'light') {

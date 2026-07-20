@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar Test Page</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding-top: 5.5rem;
+    }
+
+    .test-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+      line-height: 1.7;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(239,68,68,0.12));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      margin-bottom: 2rem;
+    }
+
+    .hero-card h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 1rem;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #86efac;
+    }
+
+    .hero-card p {
+      font-size: 1.05rem;
+      color: #d1d5db;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #000;
+      background: #22c55e;
+    }
+
+    .hero-btn.secondary {
+      background: rgba(239,68,68,0.12);
+      color: #fff;
+      border: 1px solid rgba(239,68,68,0.35);
+    }
+
+    .hero-panel {
+      min-height: 220px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .hero-panel .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-panel .stat:last-child {
+      border-bottom: none;
+    }
+
+    .spacer {
+      height: 1200px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+      border-radius: 16px;
+      margin-top: 2rem;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="test-index.html">
+        <div class="brand-main"><span class="brand-red">TEST</span><span class="brand-green">PAGE</span></div>
+        <div class="brand-subrow"><span class="brand-line"></span><span class="brand-sub">NAV TEST</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="test-index.html" class="active">Home</a>
+        <a href="index.html">Main Site</a>
+        <a href="join.html">Join</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="test-content">
+    <section class="hero-card">
+      <div>
+        <div class="eyebrow">Strength • Community • Results</div>
+        <h1>Train hard. Recover smarter. Become stronger every day.</h1>
+        <p>Discover a welcoming gym environment built for strength, recovery, and long-term progress with guidance that supports every step of your journey.</p>
+        <div class="hero-actions">
+          <a class="hero-btn" href="index.html">Open Main Site</a>
+          <a class="hero-btn secondary" href="join.html">Join Now</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="stat"><strong>Focus</strong><span>Strength</span></div>
+        <div class="stat"><strong>Support</strong><span>Community</span></div>
+        <div class="stat"><strong>Goal</strong><span>Results</span></div>
+      </div>
+    </section>
+
+    <div class="spacer">
+      <h2>Scroll Area</h2>
+      <p>The content below is intentionally tall so you can test the scrolling behavior.</p>
+    </div>
+  </main>
+</body>
+</html>
