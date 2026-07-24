@@ -102,12 +102,104 @@
       border-bottom: none;
     }
 
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+    }
+
+    .info-card h3 {
+      margin: 0 0 0.6rem;
+      color: #86efac;
+      font-size: 1.05rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: #d1d5db;
+      font-size: 0.95rem;
+    }
+
+    .bootstrap-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 35px rgba(0,0,0,0.22);
+      margin-top: 1.5rem;
+    }
+
+    .bootstrap-card .card-body {
+      padding: 1.25rem;
+    }
+
+    .bootstrap-card .card-title {
+      margin: 0 0 0.6rem;
+      font-size: 1.15rem;
+      color: #86efac;
+    }
+
+    .bootstrap-card .card-text {
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+
+    .bootstrap-card .btn {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      background: #22c55e;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, rgba(34,197,94,0.14), rgba(239,68,68,0.12));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      box-shadow: 0 16px 35px rgba(0,0,0,0.22);
+    }
+
+    .footer h3 {
+      margin: 0 0 0.75rem;
+      color: #86efac;
+    }
+
+    .footer p,
+    .footer a {
+      margin: 0.25rem 0;
+      color: #f3f4f6;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #86efac;
+    }
+
     .spacer {
       height: 1200px;
       background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
       border-radius: 16px;
       margin-top: 2rem;
       padding: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -143,6 +235,37 @@
         <div class="stat"><strong>Goal</strong><span>Results</span></div>
       </div>
     </section>
+
+    <section class="card-grid">
+      <article class="info-card">
+        <h3>Strength Focus</h3>
+        <p>Build power, endurance, and confidence with programs designed to challenge and support your progress.</p>
+      </article>
+      <article class="info-card">
+        <h3>Community Support</h3>
+        <p>Enjoy a welcoming atmosphere where members and trainers help each other stay consistent and motivated.</p>
+      </article>
+      <article class="info-card">
+        <h3>Progress Tracking</h3>
+        <p>Keep an eye on your improvements with simple routines, clear goals, and steady coaching.</p>
+      </article>
+    </section>
+
+    <div class="bootstrap-card">
+      <div class="card-body">
+        <h3 class="card-title">Bootstrap Card</h3>
+        <p class="card-text">This is a simple Bootstrap-style card with a title, description, and action button.</p>
+        <a href="join.html" class="btn">Learn More</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <h3>ASHS Gym</h3>
+      <p>Location: 12 Example Street, Auckland</p>
+      <p>Phone: (09) 123 4567</p>
+      <p>Email: info@ashsgym.co.nz</p>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram: @ashsgym</a>
+    </footer>
 
     <div class="spacer">
       <h2>Scroll Area</h2>
