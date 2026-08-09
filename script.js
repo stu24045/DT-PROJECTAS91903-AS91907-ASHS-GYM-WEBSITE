@@ -18,10 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyTheme(theme) {
     if (theme === 'light') {
       document.body.classList.add('light-theme');
-      themeToggle.textContent = 'Dark Mode';
+      if (themeToggle) {
+        themeToggle.textContent = 'Dark Mode';
+      }
     } else {
       document.body.classList.remove('light-theme');
-      themeToggle.textContent = 'Light Mode';
+      if (themeToggle) {
+        themeToggle.textContent = 'Light Mode';
+      }
     }
     localStorage.setItem('theme', theme);
   }
@@ -41,18 +45,58 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (!form) return;
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        if (message) {
+          message.textContent = 'Please fill in all required fields correctly.';
+        }
+        return;
+      }
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      message.textContent = 'Please fill in all required fields correctly.';
-      return;
-    }
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
 
-    message.textContent = 'Application submitted! Please use the SQL schema to store your data in SQLiteStudio.';
-    form.reset();
-  });
+      fetch('/submit-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+         .then(async function (response) {
+           let data = null;
+           try {
+             data = await response.json();
+           } catch (e) {
+             // response wasn't JSON (HTML error page or plain text)
+             try {
+               data = { message: await response.text() };
+             } catch (e2) {
+               data = null;
+             }
+           }
+
+           if (message) {
+             if (data && data.message) {
+               message.textContent = data.message;
+             } else if (!response.ok) {
+               message.textContent = `Server returned ${response.status} ${response.statusText}`;
+             } else {
+               message.textContent = 'Your join request has been received.';
+             }
+           }
+
+           if (response.ok) {
+             form.reset();
+           }
+         })
+         .catch(function (err) {
+           if (message) {
+             message.textContent = 'Network error: ' + (err && err.message ? err.message : String(err));
+           }
+         });
+    });
+  }
 });

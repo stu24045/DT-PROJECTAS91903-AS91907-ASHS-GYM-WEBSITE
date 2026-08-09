@@ -5,6 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ASHS Gym | Join</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .join-page { padding: 4rem 0; }
+    .join-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hidden { display: none; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .form-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+      background: var(--input-bg);
+      color: var(--text);
+    }
+    .form-grid textarea { grid-column: 1 / -1; min-height: 110px; }
+    .status-text { margin-top: 1rem; font-weight: 600; }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .join-card { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -23,7 +64,47 @@
       </nav>
     </div>
   </header>
-  <script src="script.js"></script>
+
+  <main class="join-page">
+    <div class="container">
+      <div class="join-card">
+        <h1>Join ASHS Gym</h1>
+        <p>Fill in the form below to request to join the school gym. Your details will be saved in the database and emailed for review.</p>
+
+        <form id="joinForm" novalidate>
+          <div class="form-grid">
+            <label>
+              Full Name
+              <input type="text" name="full_name" required />
+            </label>
+            <label>
+              Age
+              <input type="number" name="age" min="10" max="100" required />
+            </label>
+            <label>
+              Grade / Year Level
+              <input type="text" name="grade" required />
+            </label>
+            <label>
+              Email
+              <input id="emailInput" type="email" name="email" required />
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" name="phone" />
+            </label>
+            <label>
+              Why do you want to join the gym?
+              <textarea name="fitness_goals" required></textarea>
+            </label>
+          </div>
+          <button type="submit" class="button button-primary" style="margin-top: 1rem;">Submit Join Request</button>
+          <p id="formMessage" class="status-text"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-card">
@@ -50,12 +131,14 @@
         </ul>
         <h3>CONNECT WITH US</h3>
         <div class="footer-social">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.facebook.com/ashssports/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/ashs_sports/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.youtube.com/@ASHS_GymClub" target="_blank" rel="noopener noreferrer">YouTube</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
