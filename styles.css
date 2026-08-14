@@ -399,6 +399,40 @@ textarea:focus {
   backdrop-filter: blur(8px);
 }
 
+/* Workout plan tables */
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+}
+.plan-table thead th {
+  background: #0b5fa5;
+  color: #fff;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+}
+.plan-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--panel-border);
+  color: var(--text);
+  vertical-align: middle;
+}
+.plan-table tbody tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+.plan-table .muted-cell {
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .plan-table thead { display: none; }
+  .plan-table, .plan-table tbody, .plan-table tr, .plan-table td { display: block; width: 100%; }
+  .plan-table tr { margin-bottom: 0.75rem; }
+  .plan-table td { padding-left: 50%; position: relative; }
+  .plan-table td::before { content: attr(data-label); position: absolute; left: 1rem; top: 0.9rem; font-weight: 700; }
+}
+
 .site-footer h2,
 .site-footer h3 {
   color: var(--footer-heading);

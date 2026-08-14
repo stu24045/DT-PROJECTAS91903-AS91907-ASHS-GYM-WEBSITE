@@ -99,4 +99,25 @@ document.addEventListener('DOMContentLoaded', function () {
          });
     });
   }
+
+  // Plan toggles: set aria attributes and handlers for workout plan cards
+  (function initPlanToggles() {
+    const planToggles = document.querySelectorAll('.plan-toggle');
+    planToggles.forEach(function (btn) {
+      const plan = btn.dataset.plan;
+      const panelId = 'plan-' + plan;
+      btn.setAttribute('aria-controls', panelId);
+      const panel = document.getElementById(panelId);
+      const isHidden = panel ? panel.hidden : true;
+      btn.setAttribute('aria-expanded', (!isHidden).toString());
+      btn.textContent = isHidden ? 'View Plan' : 'Hide Plan';
+
+      btn.addEventListener('click', function () {
+        if (!panel) return;
+        panel.hidden = !panel.hidden;
+        btn.textContent = panel.hidden ? 'View Plan' : 'Hide Plan';
+        btn.setAttribute('aria-expanded', (!panel.hidden).toString());
+      });
+    });
+  })();
 });
