@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.plan-toggle').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var plan = btn.dataset.plan;
-          var el = document.getElementById('plan-' + plan);
-          if (!el) return;
-          el.hidden = !el.hidden;
-          btn.textContent = el.hidden ? 'View Plan' : 'Hide Plan';
-        });
-      });
-    });
-  </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASHS Gym | Workout Program</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-main"><span class="brand-red">ASHS</span><span class="brand-green">GYM</span></div>
+        <div class="brand-subrow"><span class="brand-line"></span><span class="brand-sub">EST 2009</span></div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="workout-program.html" class="active">Workout Program</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="contacts.html">Contacts</a>
+        <a class="button button-secondary" href="join.html">Join</a>
+        <button id="themeToggle" class="button button-outline" aria-label="Toggle theme">Light Mode</button>
       </nav>
     </div>
   </header>
@@ -32,249 +39,244 @@
       </div>
     </section>
 
-    <section class="container" id="faq">
-      <h2 class="section-title">FAQs & Progress Tips</h2>
-      <div class="faq-grid">
-        <div>
-          <h4>How do I progress?</h4>
-          <p>Increase load or reps gradually each week. Aim for +1–2 reps or +2.5–5kg when a top set is achievable with good form.</p>
-        </div>
-        <div>
-          <h4>How much rest?</h4>
-          <p>Strength sets: 2–4 minutes. Hypertrophy: 60–90s. Conditioning: vary by modality.</p>
-        </div>
-        <div>
-          <h4>Recovery</h4>
-          <p>Prioritise 7–9 hours sleep, good nutrition, and active recovery on rest days.</p>
-        </div>
+    <section class="container workout-section">
+      <div class="cards-grid">
+        <article class="program-card">
+          <h3>Monday: Upper Body Workout</h3>
+          <table class="plan-table compact-table">
+            <thead>
+              <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Exercise">Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">6-12</td></tr>
+              <tr><td data-label="Exercise">Barbell Row</td><td data-label="Sets">3</td><td data-label="Reps">6-12</td></tr>
+              <tr><td data-label="Exercise">Seated Overhead Dumbbell Press</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Pec Dec</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">V-Bar Lat Pull Down</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Side Lateral Raise</td><td data-label="Sets">2</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Cable Tricep Extensions</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Cable Curls</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="program-card">
+          <h3>Tuesday: Lower Body Workout</h3>
+          <table class="plan-table compact-table">
+            <thead>
+              <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Exercise">Squats</td><td data-label="Sets">3</td><td data-label="Reps">6-12</td></tr>
+              <tr><td data-label="Exercise">Stiff Leg Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Standing Calf Raise</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Leg Extensions</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Leg Curl</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Seated Calf Raise</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Cable Crunch</td><td data-label="Sets">3</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Cable Pull Through w/Rope</td><td data-label="Sets">3</td><td data-label="Reps">10-12</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="program-card">
+          <h3>Thursday: Upper Body Workout</h3>
+          <table class="plan-table compact-table">
+            <thead>
+              <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Exercise">Incline Dumbbell Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Rack Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">5-8</td></tr>
+              <tr><td data-label="Exercise">Military Press</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Machine Chest Press</td><td data-label="Sets">2</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Pull Ups or Machine Rows</td><td data-label="Sets">2</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Machine Shoulder Press</td><td data-label="Sets">2</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Dumbbell Curls</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Machine Tricep Dip</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="program-card">
+          <h3>Friday: Lower Body Workout</h3>
+          <table class="plan-table compact-table">
+            <thead>
+              <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Exercise">Leg Press</td><td data-label="Sets">3</td><td data-label="Reps">10-20</td></tr>
+              <tr><td data-label="Exercise">Dumbbell Stiff Leg Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Leg Press Calf Raise</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Hack Squat</td><td data-label="Sets">2</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Seated Leg Curl</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Seated Calf Raise</td><td data-label="Sets">2</td><td data-label="Reps">10-12</td></tr>
+              <tr><td data-label="Exercise">Planks</td><td data-label="Sets">3</td><td data-label="Reps">60 sec</td></tr>
+              <tr><td data-label="Exercise">Hyperextension</td><td data-label="Sets">3</td><td data-label="Reps">10-12</td></tr>
+            </tbody>
+          </table>
+        </article>
       </div>
     </section>
 
-    <section class="container programs" id="programs">
-      <div class="eyebrow">Choose a Plan</div>
-      <h2 class="section-title">Push / Pull / Legs — A & B</h2>
-
+    <section class="container workout-section">
+      <h2 class="section-title">Full Body</h2>
       <div class="cards-grid">
-        <article class="card">
+        <article class="program-card">
+          <h3>Workout A</h3>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Squats</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Bench Press</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Barbell Row</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Upright Row</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Skullcrushers</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Dumbbell Curls</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Leg Curls</td><td data-label="Sets">3</td><td data-label="Reps">12-15</td></tr>
+              <tr><td data-label="Exercise">Ab Wheel Roll Out</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="program-card">
+          <h3>Workout B</h3>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Romanian Deadlift</td><td data-label="Sets">2</td><td data-label="Reps">8-12</td></tr>
+              <tr><td data-label="Exercise">Seated Overhead Press</td><td data-label="Sets">3</td><td data-label="Reps">8-10</td></tr>
+              <tr><td data-label="Exercise">Pull Ups or Inverted Rows</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Dips</td><td data-label="Sets">3</td><td data-label="Reps">10-20</td></tr>
+              <tr><td data-label="Exercise">Barbell Shrugs</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Standing or Seated Calf Raise</td><td data-label="Sets">3</td><td data-label="Reps">12-15</td></tr>
+              <tr><td data-label="Exercise">Plank</td><td data-label="Sets">3</td><td data-label="Reps">60 sec</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="program-card">
+          <h3>Workout C</h3>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Squats</td><td data-label="Sets">3</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Squats</td><td data-label="Sets">1</td><td data-label="Reps">20</td></tr>
+              <tr><td data-label="Exercise">Incline Dumbbell Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">One Arm Dumbbell Row</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Seated Arnold Press</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+              <tr><td data-label="Exercise">Cable Tricep Extensions</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Barbell Curls</td><td data-label="Sets">3</td><td data-label="Reps">10</td></tr>
+              <tr><td data-label="Exercise">Leg Curls</td><td data-label="Sets">3</td><td data-label="Reps">12-15</td></tr>
+              <tr><td data-label="Exercise">Ab Wheel Roll Out</td><td data-label="Sets">3</td><td data-label="Reps">10-15</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="container workout-section">
+      <h2 class="section-title">6 Day Push/Pull/Legs Workout</h2>
+      <div class="cards-grid triple-grid">
+        <article class="program-card">
           <h3>Push Workout A</h3>
-          <p class="muted">Chest, Shoulders & Triceps</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="push-a">View Plan</button></div>
-          <div class="plan-body" id="plan-push-a" hidden>
-            <h4>Push Workout A</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Flat Barbell Bench Press</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Flat Barbell Bench Press (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Seated Behind the Neck Press</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Weighted Tricep Dips</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Standing Cable Crossovers</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Seated Tricep Extensions</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Seated Dumbbell Lateral Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Flat Barbell Bench Press</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Flat Barbell Bench Press</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Seated Behind the Neck Press</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Weighted Tricep Dips</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">Standing Cable Crossovers</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Seated Tricep Extensions</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Seated Dumbbell Lateral Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
 
-        <article class="card">
+        <article class="program-card">
           <h3>Pull Workout A</h3>
-          <p class="muted">Back, Traps & Biceps</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="pull-a">View Plan</button></div>
-          <div class="plan-body" id="plan-pull-a" hidden>
-            <h4>Pull Workout A</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Barbell Conventional Deadlift</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Deadlift (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Weighted Chin-ups</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Chest Supported Rows</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Shrugs</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Standing Barbell Curls</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Standing Cable Reverse Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Barbell Conventional Deadlift</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Barbell Conventional Deadlift</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Weighted Chin-ups</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Chest Supported Rows</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">Shrugs</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Standing Barbell Curls</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Standing Cable Reverse Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
 
-        <article class="card">
+        <article class="program-card">
           <h3>Legs Workout A</h3>
-          <p class="muted">Quads, Hamstrings & Calves</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="legs-a">View Plan</button></div>
-          <div class="plan-body" id="plan-legs-a" hidden>
-            <h4>Legs Workout A</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Barbell Back Squat</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Back Squat (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Barbell Good Mornings</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Leg Press</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Reverse Hyperextension</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Leg Curl</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Calf Raise</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Barbell Back Squat</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Barbell Back Squat</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Barbell Good Mornings</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Leg Press</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">Reverse Hyperextension</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Leg Curl</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Calf Raise</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
 
-        <article class="card">
+        <article class="program-card">
           <h3>Push Workout B</h3>
-          <p class="muted">Chest, Shoulders & Triceps</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="push-b">View Plan</button></div>
-          <div class="plan-body" id="plan-push-b" hidden>
-            <h4>Push Workout B</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Standing Overhead Press</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Overhead Press (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Incline Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Close Grip Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Seated Machine Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Standing Tricep Pushdown</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Standing Cable Lateral Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Standing Overhead Press</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Standing Overhead Press</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Incline Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Close Grip Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">Seated Machine Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Standing Tricep Pushdown</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Standing Cable Lateral Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
 
-        <article class="card">
+        <article class="program-card">
           <h3>Pull Workout B</h3>
-          <p class="muted">Back, Traps & Biceps</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="pull-b">View Plan</button></div>
-          <div class="plan-body" id="plan-pull-b" hidden>
-            <h4>Pull Workout B</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Barbell Snatch Grip Deadlift</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Snatch Grip Deadlift (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Barbell Rows</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Weighted Pull-ups</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">1-arm Rows</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Incline Dumbbell Curl</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Seated Machine Reverse Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Barbell Snatch Grip Deadlift</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Barbell Snatch Grip Deadlift</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Barbell Rows</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Weighted Pull-ups</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">1-arm Rows</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Incline Dumbbell Curl</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Seated Machine Reverse Fly</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
 
-        <article class="card">
+        <article class="program-card">
           <h3>Legs Workout B</h3>
-          <p class="muted">Quads, Hamstrings & Calves</p>
-          <div class="card-actions"><button class="plan-toggle" data-plan="legs-b">View Plan</button></div>
-          <div class="plan-body" id="plan-legs-b" hidden>
-            <h4>Legs Workout B</h4>
-            <table class="plan-table">
-              <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
-              <tbody>
-                <tr><td data-label="Exercise">Barbell Front Squat</td><td data-label="Sets">5</td><td data-label="Reps">1–5</td><td data-label="Rest">90–120 sec</td></tr>
-                <tr><td data-label="Exercise">Front Squat (light set)</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td><td data-label="Rest">N/A</td></tr>
-                <tr><td data-label="Exercise">Barbell Romanian Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">2–5</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Barbell Hip Thrusts</td><td data-label="Sets">3</td><td data-label="Reps">3</td><td data-label="Rest">60 sec</td></tr>
-                <tr><td data-label="Exercise">Dumbbell Lunges</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Seated Leg Extensions</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">30 sec</td></tr>
-                <tr><td data-label="Exercise">Hanging Leg Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td><td data-label="Rest">15 sec</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-      </div>
-
-      <div class="program-actions"></div>
-    </section>
-
-    <section class="container" id="weekly-schedule">
-      <h2 class="section-title">Weekly Schedule</h2>
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Monday — Upper Body</h3>
-          <div class="plan-body">
-            <table class="plan-table">
-              <thead>
-                <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-              </thead>
-              <tbody>
-                <tr><td data-label="Exercise">Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">6–12</td></tr>
-                <tr><td data-label="Exercise">Barbell Row</td><td data-label="Sets">3</td><td data-label="Reps">6–12</td></tr>
-                <tr><td data-label="Exercise">Seated Overhead Dumbbell Press</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Pec Dec - 3 sec negative</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">V-Bar Lat Pull Down - 3 sec negative</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Side Lateral Raise</td><td data-label="Sets">2</td><td data-label="Reps">10–15</td></tr>
-                <tr><td data-label="Exercise">Cable Tricep Extensions - 3 sec negative</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Cable Curls - 3 sec negative</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Tuesday — Lower Body</h3>
-          <div class="plan-body">
-            <table class="plan-table">
-              <thead>
-                <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-              </thead>
-              <tbody>
-                <tr><td data-label="Exercise">Squats</td><td data-label="Sets">3</td><td data-label="Reps">6–12</td></tr>
-                <tr><td data-label="Exercise">Stiff Leg Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Standing Calf Raise</td><td data-label="Sets">3</td><td data-label="Reps">10–15</td></tr>
-                <tr><td data-label="Exercise">Leg Extensions - 3 sec negative</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Leg Curl - 3 sec negative</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Seated Calf Raise - 3 sec negative</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Cable Crunch - 3 sec negative</td><td data-label="Sets">3</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Cable Pull Through w/Rope</td><td data-label="Sets">3</td><td data-label="Reps">10–12</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Thursday — Upper Body</h3>
-          <div class="plan-body">
-            <table class="plan-table">
-              <thead>
-                <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-              </thead>
-              <tbody>
-                <tr><td data-label="Exercise">Incline Dumbbell Bench Press</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Rack Deadlifts (3–5" off ground)</td><td data-label="Sets">3</td><td data-label="Reps">5–8</td></tr>
-                <tr><td data-label="Exercise">Military Press</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Machine Chest Press (3 sec negative)</td><td data-label="Sets">2</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Pull Ups or Machine Rows (3 sec negative)</td><td data-label="Sets">2</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Machine Shoulder Press (3 sec negative)</td><td data-label="Sets">2</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Dumbbell Curls (3 sec negative)</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Machine Tricep Dip (3 sec negative)</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Friday — Lower Body</h3>
-          <div class="plan-body">
-            <table class="plan-table">
-              <thead>
-                <tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-              </thead>
-              <tbody>
-                <tr><td data-label="Exercise">Leg Press</td><td data-label="Sets">3</td><td data-label="Reps">10–20</td></tr>
-                <tr><td data-label="Exercise">Dumbbell Stiff Leg Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Leg Press Calf Raise</td><td data-label="Sets">3</td><td data-label="Reps">10–15</td></tr>
-                <tr><td data-label="Exercise">Hack Squat</td><td data-label="Sets">2</td><td data-label="Reps">8–12</td></tr>
-                <tr><td data-label="Exercise">Seated Leg Curl (3 sec negative)</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Seated Calf Raise (3 sec negative)</td><td data-label="Sets">2</td><td data-label="Reps">10–12</td></tr>
-                <tr><td data-label="Exercise">Planks</td><td data-label="Sets">3</td><td data-label="Reps">60 sec</td></tr>
-                <tr><td data-label="Exercise">Hyperextension</td><td data-label="Sets">3</td><td data-label="Reps">10–12</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="plan-table compact-table">
+            <thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Exercise">Barbell Front Squat</td><td data-label="Sets">5</td><td data-label="Reps">1-5</td></tr>
+              <tr><td data-label="Exercise">Barbell Front Squat</td><td data-label="Sets">1</td><td data-label="Reps">AMRAP</td></tr>
+              <tr><td data-label="Exercise">Barbell Romanian Deadlifts</td><td data-label="Sets">3</td><td data-label="Reps">2-5</td></tr>
+              <tr><td data-label="Exercise">Barbell Hip Thrusts</td><td data-label="Sets">3</td><td data-label="Reps">3</td></tr>
+              <tr><td data-label="Exercise">Dumbbell Lunges</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Seated Leg Extensions</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+              <tr><td data-label="Exercise">Hanging Leg Raises</td><td data-label="Sets">5</td><td data-label="Reps">5</td></tr>
+            </tbody>
+          </table>
         </article>
       </div>
     </section>
 
-    
   </main>
 
   <script src="script.js"></script>

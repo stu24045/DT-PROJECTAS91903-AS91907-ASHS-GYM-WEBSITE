@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function getPreferredTheme() {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) return storedTheme;
+    if (currentPage === 'workout-program.html') {
+      return 'light';
+    }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
