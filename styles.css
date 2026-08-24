@@ -167,6 +167,28 @@ img {
   transition: color 0.2s ease;
 }
 
+.site-nav > a:not(.button) {
+  position: relative;
+  padding: 0.35rem 0.25rem;
+}
+
+.site-nav > a:not(.button)::after {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0;
+  left: 0.25rem;
+  height: 2px;
+  background: var(--accent);
+  content: '';
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.site-nav > a:not(.button):hover::after,
+.site-nav > a:not(.button).active::after {
+  transform: scaleX(1);
+}
+
 .site-nav button {
   border: 1px solid transparent;
   background: transparent;
