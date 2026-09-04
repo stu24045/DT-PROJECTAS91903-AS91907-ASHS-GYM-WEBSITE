@@ -108,6 +108,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Carousel component: show one gallery image and provide simple navigation.
+  (function initGalleryCarousel() {
+    const carousel = document.querySelector('.gallery-carousel');
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.gallery-slide');
+    const previousButton = carousel.querySelector('.gallery-previous');
+    const nextButton = carousel.querySelector('.gallery-next');
+    const dotsContainer = carousel.querySelector('.gallery-dots');
+    let activeSlideIndex = 0;
+
+    function showSlide(slideIndex) {
+      activeSlideIndex = (slideIndex + slides.length) % slides.length;
+
+      slides.forEach(function (slide, index) {
+        const isActive = index === activeSlideIndex;
+        slide.classList.toggle('active-slide', isActive);
+        slide.setAttribute('aria-hidden', (!isActive).toString());
+      });
+
+      dotsContainer.querySelectorAll('button').forEach(function (dot, index) {
+        dot.classList.toggle('active-dot', index === activeSlideIndex);
+        dot.setAttribute('aria-current', index === activeSlideIndex ? 'true' : 'false');
+      });
+    }
+
+    slides.forEach(function (slide, index) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'gallery-dot';
+      dot.setAttribute('aria-label', 'Show gallery image ' + (index + 1));
+      dot.addEventListener('click', function () {
+        showSlide(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    previousButton.addEventListener('click', function () {
+      showSlide(activeSlideIndex - 1);
+    });
+
+    nextButton.addEventListener('click', function () {
+      showSlide(activeSlideIndex + 1);
+    });
+
+    showSlide(0);
+  })();
+
   // Plan toggles: set aria attributes and handlers for workout plan cards
   (function initPlanToggles() {
     const planToggles = document.querySelectorAll('.plan-toggle');

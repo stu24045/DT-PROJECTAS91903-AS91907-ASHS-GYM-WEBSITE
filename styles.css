@@ -310,18 +310,71 @@ img {
 }
 
 .prizegiving-gallery {
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.gallery-carousel {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
   gap: 1rem;
 }
 
-.prizegiving-gallery figure {
+.gallery-slide {
+  display: none;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.gallery-slide.active-slide {
+  display: block;
+}
+
+.gallery-control {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.gallery-control:hover,
+.gallery-control:focus-visible {
+  background: var(--accent);
+  color: #000000;
+}
+
+.gallery-dots {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.gallery-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gallery-dot.active-dot,
+.gallery-dot:hover,
+.gallery-dot:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .prizegiving-image {
