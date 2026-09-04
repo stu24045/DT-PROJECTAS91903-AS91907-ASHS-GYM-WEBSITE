@@ -300,6 +300,37 @@ img {
   padding: 3rem 0;
 }
 
+.prizegiving-section {
+  /* Keeps the gallery centred and spaced from nearby sections. */
+  padding: 1rem 0 3rem;
+}
+
+.prizegiving-section h2 {
+  margin-top: 0;
+}
+
+.prizegiving-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.prizegiving-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.prizegiving-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
 .info-card,
 .callout,
 .join-details,
