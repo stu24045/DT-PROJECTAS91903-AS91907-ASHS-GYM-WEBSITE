@@ -1,22 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Find the page elements used by the theme switcher, navigation, and join form.
   const themeToggle = document.getElementById('themeToggle');
   const form = document.getElementById('joinForm');
   const message = document.getElementById('formMessage');
   const navLinks = document.querySelectorAll('.site-nav a[href]');
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  navLinks.forEach(function (link) {
-    const href = link.getAttribute('href') || '';
-    const normalizedHref = href.split('?')[0].split('#')[0].toLowerCase();
-    const normalizedPage = currentPage.toLowerCase();
+  // Highlight the navigation link for the page the visitor is currently viewing.
+  navLinks.forEach(function (navigationLink) {
+    const linkAddress = navigationLink.getAttribute('href') || '';
+    const cleanLinkAddress = linkAddress.split('?')[0].split('#')[0].toLowerCase();
+    const cleanCurrentPage = currentPage.toLowerCase();
 
-    if (normalizedHref === normalizedPage || (normalizedHref === 'index.html' && (normalizedPage === '' || normalizedPage === 'index.html'))) {
-      link.classList.add('active');
+    if (cleanLinkAddress === cleanCurrentPage || (cleanLinkAddress === 'index.html' && (cleanCurrentPage === '' || cleanCurrentPage === 'index.html'))) {
+      navigationLink.classList.add('active');
     }
   });
 
-  function applyTheme(theme) {
-    if (theme === 'light') {
+  // Apply the selected colour theme and remember it for the next visit.
+  function applyTheme(selectedTheme) {
+    if (selectedTheme === 'light') {
       document.body.classList.add('light-theme');
       if (themeToggle) {
         themeToggle.textContent = 'Dark Mode';
@@ -27,12 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
         themeToggle.textContent = 'Light Mode';
       }
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('theme', selectedTheme);
   }
 
+  // Use the saved theme, the workout page default, or the device preference.
   function getPreferredTheme() {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) return storedTheme;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
     if (currentPage === 'workout-program.html') {
       return 'light';
     }
@@ -49,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (form) {
+    // Validate and send the join form to the Flask server without reloading the page.
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
@@ -60,44 +65,44 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
+      const submittedFormData = new FormData(form);
+      const applicationDetails = Object.fromEntries(submittedFormData.entries());
 
       fetch('/submit-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(applicationDetails),
       })
-         .then(async function (response) {
-           let data = null;
+         .then(async function (serverResponse) {
+           let responseData = null;
            try {
-             data = await response.json();
-           } catch (e) {
+             responseData = await serverResponse.json();
+           } catch (jsonError) {
              // response wasn't JSON (HTML error page or plain text)
              try {
-               data = { message: await response.text() };
-             } catch (e2) {
-               data = null;
+               responseData = { message: await serverResponse.text() };
+             } catch (textError) {
+               responseData = null;
              }
            }
 
            if (message) {
-             if (data && data.message) {
-               message.textContent = data.message;
-             } else if (!response.ok) {
-               message.textContent = `Server returned ${response.status} ${response.statusText}`;
+             if (responseData && responseData.message) {
+               message.textContent = responseData.message;
+             } else if (!serverResponse.ok) {
+               message.textContent = `Server returned ${serverResponse.status} ${serverResponse.statusText}`;
              } else {
                message.textContent = 'Your join request has been received.';
              }
            }
 
-           if (response.ok) {
+           if (serverResponse.ok) {
              form.reset();
            }
          })
-         .catch(function (err) {
+         .catch(function (networkError) {
            if (message) {
-             message.textContent = 'Network error: ' + (err && err.message ? err.message : String(err));
+             message.textContent = 'Network error: ' + (networkError && networkError.message ? networkError.message : String(networkError));
            }
          });
     });

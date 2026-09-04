@@ -9,18 +9,20 @@ from flask import Flask, jsonify, request, send_from_directory
 app = Flask(__name__, static_folder='.', static_url_path='')
 app.secret_key = os.getenv('SECRET_KEY', 'ashs-gym-secret-key')
 
+# Store submitted join applications in a database beside this Python file.
 DATABASE_PATH = Path(__file__).with_name('submissions.db')
 
 
 def get_db_connection():
-    conn = sqlite3.connect(DATABASE_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+    database_connection = sqlite3.connect(DATABASE_PATH)
+    database_connection.row_factory = sqlite3.Row
+    return database_connection
 
 
 def init_db():
-    conn = get_db_connection()
-    conn.execute(
+    # Create the applications table when the server starts for the first time.
+    database_connection = get_db_connection()
+    database_connection.execute(
         '''
         CREATE TABLE IF NOT EXISTS gym_applications (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,19 +31,21 @@ def init_db():
             grade TEXT NOT NULL,
             email TEXT NOT NULL,
             phone TEXT,
+            preferred_program TEXT NOT NULL,
             fitness_goals TEXT NOT NULL,
             submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
         '''
     )
-    conn.commit()
-    conn.close()
+    database_connection.commit()
+    database_connection.close()
 
 
 init_db()
 
 
 def send_email(subject, body, recipient):
+    # Email is optional, so return False when SMTP settings are not configured.
     smtp_host = os.getenv('SMTP_HOST', '').strip()
     if not smtp_host:
         return False
@@ -71,6 +75,7 @@ def send_email(subject, body, recipient):
 
 
 def send_join_notification(data):
+    # Send a confirmation to the applicant and a notification to the gym admin.
     full_name = data.get('full_name', '').strip()
     email = data.get('email', '').strip()
     admin_email = os.getenv('ADMIN_EMAIL', 'info@ashs.school.nz').strip()
@@ -105,14 +110,15 @@ def join_page():
 
 @app.route('/submit-application', methods=['POST'])
 def submit_application():
-    data = request.get_json(silent=True) or {}
-    full_name = (data.get('full_name') or '').strip()
-    age_raw = data.get('age')
-    grade = (data.get('grade') or '').strip()
-    email = (data.get('email') or '').strip()
-    phone = (data.get('phone') or '').strip()
-    fitness_goals = (data.get('fitness_goals') or '').strip()
-    preferred_program = (data.get('preferred_program') or 'No preference').strip()
+    # Read and clean the form values sent by the browser.
+    application_data = request.get_json(silent=True) or {}
+    full_name = (application_data.get('full_name') or '').strip()
+    age_raw = application_data.get('age')
+    grade = (application_data.get('grade') or '').strip()
+    email = (application_data.get('email') or '').strip()
+    phone = (application_data.get('phone') or '').strip()
+    fitness_goals = (application_data.get('fitness_goals') or '').strip()
+    preferred_program = (application_data.get('preferred_program') or 'No preference').strip()
 
     if not full_name or not grade or not fitness_goals:
         return jsonify({'success': False, 'message': 'Please complete all required fields.'}), 400
@@ -123,20 +129,20 @@ def submit_application():
         return jsonify({'success': False, 'message': 'Please enter a valid age.'}), 400
 
     try:
-        conn = get_db_connection()
-        conn.execute(
+        database_connection = get_db_connection()
+        database_connection.execute(
             '''
             INSERT INTO gym_applications (full_name, age, grade, email, phone, fitness_goals, preferred_program)
             VALUES (?, ?, ?, ?, ?, ?, ?)
             ''',
             (full_name, age, grade, email, phone, fitness_goals, preferred_program),
         )
-        conn.commit()
-        conn.close()
+        database_connection.commit()
+        database_connection.close()
 
         # send notification (optional)
         try:
-            send_join_notification(data)
+            send_join_notification(application_data)
         except Exception:
             # don't fail the request if email sending fails
             pass
@@ -145,9 +151,9 @@ def submit_application():
             'success': True,
             'message': 'Your join request has been saved successfully. We will contact you soon.'
         })
-    except Exception as e:
+    except Exception as error:
         # Return JSON error so the client can show it
-        return jsonify({'success': False, 'message': f'Server error: {e}'}), 500
+        return jsonify({'success': False, 'message': f'Server error: {error}'}), 500
 
 
 @app.route('/<path:filename>')

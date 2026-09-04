@@ -1,4 +1,5 @@
 :root {
+  /* Shared colours and effects used by every page component. */
   color-scheme: dark;
   --bg: linear-gradient(180deg, #000000 0%, #090909 100%);
   --surface: rgba(255, 255, 255, 0.05);
@@ -27,6 +28,7 @@
 }
 
 body.light-theme {
+  /* Replace the shared values when light mode is selected. */
   color-scheme: light;
   --bg: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
   --surface: rgba(255, 255, 255, 0.82);
@@ -87,6 +89,7 @@ img {
 }
 
 .site-header {
+  /* Fixed navigation bar shown at the top of every page. */
   position: fixed;
   top: 0;
   left: 0;
@@ -229,6 +232,7 @@ img {
 }
 
 .hero {
+  /* Introductory section that explains the purpose of each page. */
   padding: 4rem 0 3rem;
 }
 
@@ -303,6 +307,7 @@ img {
 .guidelines-list article,
 .program-grid article,
 .feature-grid article {
+  /* Reusable panels for information, contact details, and features. */
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -350,6 +355,7 @@ img {
 }
 
 .join-form {
+  /* Vertical layout for the membership application fields. */
   display: grid;
   gap: 1rem;
 }
@@ -394,6 +400,7 @@ textarea:focus {
 }
 
 .site-footer {
+  /* Shared footer containing gym information and useful links. */
   padding: 3rem 0 3.5rem;
   background: var(--footer-bg);
   border-top: 1px solid rgba(239, 68, 68, 0.28);
@@ -536,6 +543,7 @@ textarea:focus {
 }
 
 .plan-table {
+  /* Workout tables show each exercise with its sets and repetitions. */
   width: 100%;
   border-collapse: collapse;
   background: var(--card-bg);

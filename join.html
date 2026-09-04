@@ -48,6 +48,7 @@
   </style>
 </head>
 <body>
+  <!-- Header component: displays the gym brand and links to the other pages. -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">
@@ -65,12 +66,14 @@
     </div>
   </header>
 
+  <!-- Main component: contains the membership application page. -->
   <main class="join-page">
     <div class="container">
       <div class="join-card">
         <h1>Join ASHS Gym</h1>
         <p>Fill in the form below to request to join the school gym. Your details will be saved in the database and emailed for review.</p>
 
+        <!-- Join form component: collects details that are sent to the Flask server. -->
         <form id="joinForm" novalidate>
           <div class="form-grid">
             <label>
@@ -105,6 +108,7 @@
     </div>
   </main>
 
+  <!-- Footer component: provides contact details, social links, and navigation. -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-card">
